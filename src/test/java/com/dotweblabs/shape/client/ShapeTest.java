@@ -20,7 +20,7 @@ public class ShapeTest extends GWTTestCase {
 
     @Override
     public String getModuleName() {
-        return "com.dotweblabs.shape.Http";
+        return "com.dotweblabs.shape.Shape";
     }
 
     public void testGet() {
