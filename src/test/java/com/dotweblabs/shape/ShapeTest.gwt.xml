@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<module rename-to="HttpTest" >
+    <inherits name="com.dotweblabs.shape.Shape" />
+    <source path="client" />
+</module>
