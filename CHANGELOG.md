@@ -1,3 +1,7 @@
+## 0-SNAPSHOT - 06/27/16
+
+- Remove Diamond operators
+
 ## 0-SNAPSHOT - 06/26/16
 
 - Throw exception on response code greater than or equal to 400

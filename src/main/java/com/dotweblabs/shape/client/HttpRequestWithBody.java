@@ -64,7 +64,7 @@ public class HttpRequestWithBody {
 
     public HttpRequestWithBody queryString(String name, String value){
         if(queryMap == null){
-            queryMap = new LinkedHashMap<>();
+            queryMap = new LinkedHashMap<String,String>();
         }
         queryMap.put(name, value);
         return this;
@@ -72,7 +72,7 @@ public class HttpRequestWithBody {
 
     public HttpRequestWithBody field(String name, String value){
         if(fields == null){
-            fields = new LinkedHashMap<>();
+            fields = new LinkedHashMap<String,Object>();
         }
         fields.put(name, value);
         return this;
