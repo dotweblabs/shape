@@ -126,7 +126,11 @@ public class HttpRequestWithBody {
             b.sendRequest(String.valueOf(payload), new RequestCallback() {
                 public void onResponseReceived(Request request, Response response) {
                     String resp = response.getText();
-                    callback.onSuccess(resp);
+                    if(response.getStatusCode() >= 400){
+                        callback.onFailure(new HttpRequestException(resp, response.getStatusCode()));
+                    } else {
+                        callback.onSuccess(resp);
+                    }
                 }
                 public void onError(Request request, Throwable exception) {
                     callback.onFailure(exception);
