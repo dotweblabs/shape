@@ -138,6 +138,7 @@ public class HttpRequestWithBody {
             });
         } catch (RequestException ex) {
             ex.printStackTrace();
+            callback.onFailure(ex);
         }
     }
 

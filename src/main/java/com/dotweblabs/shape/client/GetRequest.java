@@ -86,6 +86,7 @@ public class GetRequest {
             });
         } catch (RequestException ex) {
             ex.printStackTrace();
+            callback.onFailure(ex);
         }
     }
 
