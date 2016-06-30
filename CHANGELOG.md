@@ -1,4 +1,5 @@
 ## 0-SNAPSHOT - 06/30/16
+- Null check on RequestBuilder setHeader
 - Header will not be added when value is null
 
 ## 0-SNAPSHOT - 06/29/16

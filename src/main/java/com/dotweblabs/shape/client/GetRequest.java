@@ -70,7 +70,10 @@ public class GetRequest {
             headerMap.put("Content-Type", "application/json");
             headerMap.put("accept", "application/json");
             for (Map.Entry<String,String> entry : headerMap.entries()) {
-                b.setHeader(entry.getKey(), entry.getValue());
+                if(entry.getKey() != null && entry.getValue() != null
+                        && !entry.getKey().isEmpty() && !entry.getValue().isEmpty()) {
+                    b.setHeader(entry.getKey(), entry.getValue());
+                }
             }
         }
         if(authorization != null){
