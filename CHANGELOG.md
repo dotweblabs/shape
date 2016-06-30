@@ -1,3 +1,6 @@
+## 0-SNAPSHOT - 06/30/16
+- Header will not be added when value is null
+
 ## 0-SNAPSHOT - 06/29/16
 - Fail on Request exception
 

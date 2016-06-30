@@ -48,7 +48,9 @@ public class GetRequest {
         if(headerMap == null){
             headerMap = ArrayListMultimap.create();
         }
-        headerMap.put(header, value);
+        if(value != null) {
+            headerMap.put(header, value);
+        }
         return this;
     }
 
