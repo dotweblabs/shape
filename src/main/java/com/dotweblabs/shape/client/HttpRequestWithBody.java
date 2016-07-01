@@ -128,19 +128,36 @@ public class HttpRequestWithBody {
             if(authorization != null){
                 b.setHeader("Authorization", authorization);
             }
-            b.sendRequest(String.valueOf(payload), new RequestCallback() {
-                public void onResponseReceived(Request request, Response response) {
-                    String resp = response.getText();
-                    if(response.getStatusCode() >= 400){
-                        callback.onFailure(new HttpRequestException(resp, response.getStatusCode()));
-                    } else {
-                        callback.onSuccess(resp);
+            if(payload != null) {
+                b.sendRequest(String.valueOf(payload), new RequestCallback() {
+                    public void onResponseReceived(Request request, Response response) {
+                        String resp = response.getText();
+                        if(response.getStatusCode() >= 400){
+                            callback.onFailure(new HttpRequestException(resp, response.getStatusCode()));
+                        } else {
+                            callback.onSuccess(resp);
+                        }
                     }
-                }
-                public void onError(Request request, Throwable exception) {
-                    callback.onFailure(exception);
-                }
-            });
+                    public void onError(Request request, Throwable exception) {
+                        callback.onFailure(exception);
+                    }
+                });
+            } else {
+                b.sendRequest("", new RequestCallback() {
+                    public void onResponseReceived(Request request, Response response) {
+                        String resp = response.getText();
+                        if(response.getStatusCode() >= 400){
+                            callback.onFailure(new HttpRequestException(resp, response.getStatusCode()));
+                        } else {
+                            callback.onSuccess(resp);
+                        }
+                    }
+                    public void onError(Request request, Throwable exception) {
+                        callback.onFailure(exception);
+                    }
+                });
+            }
+
         } catch (RequestException ex) {
             ex.printStackTrace();
             callback.onFailure(ex);
