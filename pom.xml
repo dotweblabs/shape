@@ -205,7 +205,7 @@
 	</profiles>
 	<distributionManagement>
 		<snapshotRepository>
-			<id>bintray-dotweblabs-maven-shape</id>
+			<id>bintray-dotweblabs-maven</id>
 			<name>oss-jfrog-artifactory-snapshots</name>
 			<url>http://oss.jfrog.org/artifactory/oss-snapshot-local</url>
 		</snapshotRepository>
