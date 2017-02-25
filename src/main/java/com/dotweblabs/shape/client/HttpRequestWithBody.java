@@ -40,6 +40,7 @@ public class HttpRequestWithBody {
     private Map<String,Object> fields;
     private Object body = null;
     private RequestBuilder.Method method;
+    private int TIMEOUT = 60000;
 
     private String authorization;
 
@@ -91,6 +92,7 @@ public class HttpRequestWithBody {
             url = url +  queries(queryMap);
         }
         RequestBuilder b = new RequestBuilder(method, url);
+        b.setTimeoutMillis(TIMEOUT);
         if(headerMap != null){
             // Set default first
             headerMap.put("Content-Type", "application/json");
@@ -182,6 +184,10 @@ public class HttpRequestWithBody {
             sb.append(k).append("=").append(vx);
         }
         return sb.toString();
+    }
+
+    public void setTimeout(int timeout) {
+        this.TIMEOUT = timeout;
     }
 
 }

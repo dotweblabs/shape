@@ -38,6 +38,7 @@ public class GetRequest {
     private Map<String,Object> fields = null;
 
     private String authorization = null;
+    private int TIMEOUT = 60000;
 
     public GetRequest(String url) {
         setUrl(url);
@@ -65,6 +66,7 @@ public class GetRequest {
             url = url +  queries(queryMap);
         }
         RequestBuilder b = new RequestBuilder(RequestBuilder.GET, url);
+        b.setTimeoutMillis(TIMEOUT);
         if(headerMap != null){
             // Set default first
             headerMap.put("Content-Type", "application/json");
@@ -113,6 +115,10 @@ public class GetRequest {
             sb.append(k).append("=").append(vx);
         }
         return sb.toString();
+    }
+
+    public void setTimeout(int timeout) {
+        this.TIMEOUT = timeout;
     }
 
 }

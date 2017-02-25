@@ -1,3 +1,6 @@
+## 0-SNAPSHOT - 01/30/17
+- Add set timeout on requests
+
 ## 0-SNAPSHOT - 06/30/16
 - Null check on RequestBuilder setHeader
 - Header will not be added when value is null
