@@ -1,3 +1,8 @@
+## 0-SNAPSHOT - 04/18/17
+- Added JUnit test delay
+- Added Logging
+- Updated JUnit version
+
 ## 0-SNAPSHOT - 01/30/17
 - Add set timeout on requests
 

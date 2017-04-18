@@ -25,6 +25,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +35,9 @@ import java.util.Map;
  *
  */
 public class HttpRequestWithBody {
+
+    static final Logger logger = Logger.getLogger(HttpRequestWithBody.class.getName());
+
     private String url;
     private Multimap<String,String> headerMap;
     private Map<String, String> queryMap;

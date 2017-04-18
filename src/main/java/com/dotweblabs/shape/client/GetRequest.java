@@ -22,6 +22,8 @@ import com.google.gwt.http.client.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +33,8 @@ import java.util.Map;
  *
  */
 public class GetRequest {
+
+    static final Logger logger = Logger.getLogger(GetRequest.class.getName());
 
     private String url;
     private Multimap<String,String> headerMap;

@@ -6,6 +6,8 @@ import com.google.gwt.json.client.JSONString;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import java.util.logging.Logger;
+
 /**
  *
  * Unit tests of {@link ShapeTest}
@@ -16,11 +18,15 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public class ShapeTest extends GWTTestCase {
 
-    private static final String TEST_APP_ID = "123";
+    static final Logger logger = Logger.getLogger(ShapeTest.class.getName());
 
     @Override
     public String getModuleName() {
         return "com.dotweblabs.shape.Shape";
+    }
+
+    public void test() {
+
     }
 
     public void testGet() {
@@ -33,9 +39,9 @@ public class ShapeTest extends GWTTestCase {
                         log(throwable.getMessage());
                         fail();
                     }
-
                     @Override
                     public void onSuccess(String s) {
+                        logger.info(s);
                         JSONObject json = (JSONObject) JSONParser.parseStrict(s);
                         JSONString url = json.get("url").isString();
                         JSONObject headers = json.get("headers").isObject();
@@ -43,8 +49,10 @@ public class ShapeTest extends GWTTestCase {
                         assertNotNull(url);
                         assertNotNull(headers);
                         log(s);
+                        finishTest();
                     }
                 });
+        delayTestFinish(60000);
     }
 
 
@@ -59,6 +67,7 @@ public class ShapeTest extends GWTTestCase {
                     @Override
                     public void onFailure(Throwable throwable) {
                         log(throwable.getMessage());
+                        fail();
                     }
 
                     @Override
@@ -77,8 +86,11 @@ public class ShapeTest extends GWTTestCase {
                         assertEquals("Mark", name);
 
                         log(s);
+                        finishTest();
+
                     }
                 });
+        delayTestFinish(60000);
     }
 
     public void testPostJson() {
@@ -117,8 +129,11 @@ public class ShapeTest extends GWTTestCase {
                         assertEquals("world", hello);
 
                         log(s);
+                        finishTest();
+
                     }
                 });
+        delayTestFinish(60000);
     }
 
     public void testPut() {
@@ -160,8 +175,11 @@ public class ShapeTest extends GWTTestCase {
                         assertEquals(actual, authorization);
 
                         log(s);
+                        finishTest();
+
                     }
                 });
+        delayTestFinish(60000);
     }
 
     public void testDelete() {
@@ -202,8 +220,10 @@ public class ShapeTest extends GWTTestCase {
                         assertEquals(actual, authorization);
 
                         log(s);
+                        finishTest();
                     }
                 });
+        delayTestFinish(60000);
     }
     
     public static void log(String s){
