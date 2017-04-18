@@ -117,9 +117,9 @@ public class HttpRequestWithBody {
                     Map.Entry<String,Object> entry = it.next();
                     if(entry.getValue() instanceof String){
                         if(!it.hasNext()){
-                            sb.append(entry.getKey() + "=" + URL.encodeComponent((String.valueOf(entry.getValue()))));
+                            sb.append(entry.getKey()).append("=").append(URL.encodeComponent((String.valueOf(entry.getValue()))));
                         } else {
-                            sb.append(entry.getKey() + "=" + URL.encodeComponent((String.valueOf(entry.getValue()))) + "&");
+                            sb.append(entry.getKey()).append("=").append(URL.encodeComponent((String.valueOf(entry.getValue())))).append("&");
                         }
                     }
                 }
