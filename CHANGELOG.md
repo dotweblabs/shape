@@ -1,4 +1,5 @@
 ## 0-SNAPSHOT - 04/18/17
+- Fixed failing JUnit tests
 - Added JUnit test delay
 - Added Logging
 - Updated JUnit version
