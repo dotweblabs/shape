@@ -98,9 +98,25 @@ public class HttpRequestWithBody {
         RequestBuilder b = new RequestBuilder(method, url);
         b.setTimeoutMillis(TIMEOUT);
         if(headerMap != null){
-            // Set default first
-            headerMap.put("Content-Type", "application/json");
-            headerMap.put("accept", "application/json");
+            // Check first if Content-Type and accept headers are already set else set defaults
+            boolean hasContentType = false;
+            boolean hasAccept = false;
+            for (Map.Entry<String,String> entry : headerMap.entries()) {
+                if(entry.getKey() != null && entry.getValue() != null
+                        && !entry.getKey().isEmpty() && !entry.getValue().isEmpty()) {
+                    if(entry.getKey().equals("Content-Type")) {
+                        hasContentType = true;
+                    } else if (entry.getKey().equals("accept")) {
+                        hasAccept = true;
+                    }
+                }
+            }
+            if(!hasAccept) {
+                headerMap.put("accept", "application/json");
+            }
+            if(!hasContentType) {
+                headerMap.put("Content-Type", "application/json");
+            }
             for (Map.Entry<String,String> entry : headerMap.entries()) {
                 if(entry.getKey() != null && entry.getValue() != null
                         && !entry.getKey().isEmpty() && !entry.getValue().isEmpty()) {
