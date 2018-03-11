@@ -37,8 +37,9 @@
 	</developers>
 
 	<properties>
-		<gwt.version>2.8.0</gwt.version>
-		<gwt-maven.version>2.8.0-rc3</gwt-maven.version>
+		<gwt.version>2.8.2</gwt.version>
+		<gwt-maven.version>2.8.2</gwt-maven.version>
+		<guava.version>23.0</guava.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -102,8 +103,14 @@
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
 			<artifactId>guava-gwt</artifactId>
-			<version>19.0</version>
+			<version>${guava.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

@@ -18,9 +18,13 @@ package com.dotweblabs.shape.client;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.http.client.*;
+import com.google.gwt.jsonp.client.JsonpRequestBuilder;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,6 +60,14 @@ public class GetRequest {
         if(value != null) {
             headerMap.put(header, value);
         }
+        return this;
+    }
+
+    public GetRequest queryString(String name, String value){
+        if(queryMap == null){
+            queryMap = new LinkedHashMap<String,String>();
+        }
+        queryMap.put(name, value);
         return this;
     }
 
@@ -99,6 +111,22 @@ public class GetRequest {
             ex.printStackTrace();
             callback.onFailure(ex);
         }
+    }
+
+    public void asJsonp(final AsyncCallback<String> callback) {
+        if(queryMap != null && !queryMap.isEmpty()){
+            url = url + "?";
+            url = url +  queries(queryMap);
+        }
+        JsonpRequestBuilder jsonp = new JsonpRequestBuilder();
+        jsonp.requestObject(url, new AsyncCallback<JavaScriptObject>() {
+                    public void onFailure(Throwable throwable) {
+                        callback.onFailure(throwable);
+                    }
+                    public void onSuccess(JavaScriptObject response) {
+                        callback.onSuccess(JsonUtils.stringify(response));
+                    }
+                });
     }
 
     public String getUrl() {
